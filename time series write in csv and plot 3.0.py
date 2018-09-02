@@ -14,7 +14,7 @@ import numpy as np
 size = int(input('Please enter the sample size:'))
 mu_Q = int(input('Please enter mean for Q, m3/d:'))
 mu_S = int(input('Please enter the mean for COD, mg/L:'))
-sigma_error = float(input('Please enter the % of mean for sigma:'))
+sigma_error = float(input('Please enter the % of error for sigma:'))
 
 sigma_Q = sigma_error * mu_Q
 sigma_S = sigma_error * mu_S
@@ -29,6 +29,9 @@ flow.append(mu_Q)
 COD.append(mu_S)
 
 def function(sigma, r, size, datatype, mean):
+    '''
+    Markovian flow model with uniform random components
+    '''
 
     limit = sigma * ((3 * (1 - r**2))**0.5)
     print ('The range for random component of is from ' + str(-limit) + ' to ' + str(limit) )
@@ -72,4 +75,3 @@ plt.xlabel('time, hr')
 
 plt.plot(x,y2)
 plt.show()
-
